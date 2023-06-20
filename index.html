@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>CoraMeri</title>
+</head>
+
+<body>
+
+    <div class="cora_contain">
+        <div class="name_contain">
+            <h1 id="name"></h1>
+        </div>
+        <img src="Corazón.svg.png" alt="cora">
+    </div>
+    <section class="texto_motivacion">
+        <p>La vida te podra golpear cuantas veces quiera... pero en tus manos esta si seguir o no, solo recuerda algo... Piensa en todo el camino que recorriste y lo que te costo llegar a donde te encuentras, Meri, la vida es así, te dará las patadas más fuertes de toda tu vida, pero cada de esas patadas son experiencias que te harán mejor, Meri, TU PUEDES!!!</p>
+    </section>
+
+    <script>
+        var textElement = document.getElementById("name");
+        var text = "Meri Girón";
+        var delay = 200; // Delay en milisegundos entre cada letra
+        var eraseDelay = 500; // Delay en milisegundos antes de borrar el texto
+
+        function showText() {
+            var index = 0;
+
+            var interval = setInterval(function () {
+                textElement.textContent += text[index];
+                index++;
+
+                if (index >= text.length) {
+                    clearInterval(interval);
+                    setTimeout(eraseText, eraseDelay);
+                }
+            }, delay);
+        }
+
+        function eraseText() {
+            var textLength = textElement.textContent.length;
+
+            var eraseInterval = setInterval(function () {
+                textElement.textContent = textElement.textContent.slice(0, -1);
+
+                if (textElement.textContent === "") {
+                    clearInterval(eraseInterval);
+                    setTimeout(showText, delay);
+                }
+            }, delay);
+        }
+
+        showText();
+    </script>
+</body>
+
+</html>
